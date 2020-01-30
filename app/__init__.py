@@ -1,6 +1,6 @@
 import logging
 from flask import Flask
-from .model.shared_model import db
+from app.model.shared_model import db
 
 
 def create_app():

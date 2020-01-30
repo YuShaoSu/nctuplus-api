@@ -1,4 +1,4 @@
-from .shared_model import db
+from app.model.shared_model import db
 from sqlalchemy import text
 
 
