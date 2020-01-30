@@ -11,11 +11,14 @@ def create_app():
     app.config['JSON_AS_ASCII'] = False
     app.debug = True
     # app.env = 'production'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://yussu016_cs:dbliang@dbhome.cs.nctu.edu.tw' \
-                                            '/yussu016_cs_nctuplus_development '
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://yussu016_cs:dbliang@dbhome.cs.nctu.edu.tw' \
+                                            '/yussu016_cs_nctuplus_development'
+    app.config['SQLALCHEMY_ECHO'] = True
     # app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
 
     db.init_app(app)
+    with app.app_context():
+        db.create_all()
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
