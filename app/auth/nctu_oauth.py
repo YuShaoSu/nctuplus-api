@@ -33,8 +33,8 @@ def get_profile(access_token):
         'Authorization': 'Bearer ' + access_token
     }
 
-    res_json = requests.get(NCTU_OAUTH_PROFILE, headers=access_header).json()
-    res = jsons.loads(res_json)
+    res = requests.get(NCTU_OAUTH_PROFILE, headers=access_header).json()
+    # res = jsons.loads(res_json)
     user_handler(res)
 
 
