@@ -3,10 +3,9 @@ from app.auth.config import NCTU_OAUTH_ID, NCTU_OAUTH_SECRET, NCTU_OAUTH_TOKEN, 
     NCTU_OAUTH_PROFILE
 from . import auth
 import requests
-import jsons
 
 
-@auth.route('/nctu_oauth', methods=['GET'])
+@auth.route('/nctu', methods=['GET'])
 def auth_nctu_oauth():
     return redirect(NCTU_OAUTH_URL)
 
@@ -24,7 +23,6 @@ def get_token():
     }
 
     res = requests.post(NCTU_OAUTH_TOKEN, data=post_data).json()
-    # res = jsons.loads(res_json)
     get_profile(res['access_token'])
 
 
@@ -33,9 +31,11 @@ def get_profile(access_token):
         'Authorization': 'Bearer ' + access_token
     }
 
+    # {'username': '0516016', 'email': 'neighborbob.cs05@nctu.edu.tw'}
     res = requests.get(NCTU_OAUTH_PROFILE, headers=access_header).json()
-    # res = jsons.loads(res_json)
+    # create or exists
     user_handler(res)
+    # set cookie, response, redirect...
 
 
 def user_handler(res):
