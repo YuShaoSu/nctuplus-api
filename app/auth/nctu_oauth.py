@@ -23,8 +23,8 @@ def get_token():
         'redirect_uri': NCTU_OAUTH_REDIRECT
     }
 
-    res_json = requests.post(NCTU_OAUTH_TOKEN, data=post_data).json()
-    res = jsons.loads(res_json)
+    res = requests.post(NCTU_OAUTH_TOKEN, data=post_data).json()
+    # res = jsons.loads(res_json)
     get_profile(res['access_token'])
 
 
@@ -42,4 +42,4 @@ def user_handler(res):
     # handle user account, set session, etc.
     print(res)
 
-    return redirect('http://localhost:3000')
+
