@@ -1,6 +1,8 @@
-*/config.py
+app/auth/config.py
 .idea/
 *.xml
+
+app/configmodule.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

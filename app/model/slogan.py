@@ -1,12 +1,12 @@
 from .shared_model import db
+from sqlalchemy import text
 
 
-class Bulletin(db.Model):
+class Slogan(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(1000), nullable=False)
-    category = db.Column(db.Integer)
+    display = db.Column(db.Boolean, server_default=text('True'))
     author_id = db.Column(db.BigInteger, nullable=False)
-    begin_time = db.Column(db.DateTime)
-    end_time = db.Column(db.DateTime)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
+

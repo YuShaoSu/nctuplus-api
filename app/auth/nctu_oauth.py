@@ -43,4 +43,3 @@ def user_handler(res):
     print(res)
 
     return redirect('http://localhost:3000')
-

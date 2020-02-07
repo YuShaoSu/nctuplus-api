@@ -1,1 +1,1 @@
-from . import shared_model
+from . import shared_model, user, bulletin, slogan, college, department, event

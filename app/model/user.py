@@ -4,7 +4,7 @@ from sqlalchemy import text
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    student_id = db.Column(db.String(8), uniqle=False, nullable=False)
+    student_id = db.Column(db.String(10), nullable=False)                # need to be unique
     name = db.Column(db.String(10), nullable=False)
     email = db.Column(db.String(321), nullable=False)
     admission_year = db.Column(db.Integer)

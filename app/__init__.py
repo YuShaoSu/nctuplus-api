@@ -1,24 +1,17 @@
 import logging
 from flask import Flask
 from app.model.shared_model import db
+from app.configmodule import DevelopmentConfig
 
 
 def create_app():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s : %(message)s', datefmt='%m-%d %H:%M')
     app = Flask(__name__)
+    app.config.from_object(DevelopmentConfig)
 
-    app.secret_key = '7138a508b1a2ade2faea975e'
-    app.config['JSON_AS_ASCII'] = False
-    app.debug = True
-    # app.env = 'production'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://yussu016_cs:dbliang@dbhome.cs.nctu.edu.tw' \
-                                            '/yussu016_cs_nctuplus_development'
-    app.config['SQLALCHEMY_ECHO'] = True
-    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
-
-    db.init_app(app)
     with app.app_context():
-        db.create_all()
+        db.init_app(app)
+        db.create_all(app=app)
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
