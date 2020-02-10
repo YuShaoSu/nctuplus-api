@@ -26,7 +26,7 @@ def get_token():
 
     res = requests.post(NCTU_OAUTH_TOKEN, data=post_data).json()
     user = get_profile(res['access_token'])
-    return redirect(HOME_URL, 302, user)
+    return redirect(HOME_URL)
 
 
 def get_profile(access_token):
