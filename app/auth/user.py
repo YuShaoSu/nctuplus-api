@@ -13,5 +13,5 @@ def chk_login():
 
 @auth.route('/logout', methods=['GET'])
 def logout():
-    session['uid'] = False
+    session.pop('uid', None)
     return redirect(config.HOME_URL)
