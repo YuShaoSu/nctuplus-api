@@ -23,4 +23,4 @@ def get_nctu_user(profile):
 
 
 def set_session(user):
-    session['uid'] = user['id']
+    session['uid'] = user.id
