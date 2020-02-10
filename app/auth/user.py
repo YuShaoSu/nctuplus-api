@@ -2,7 +2,7 @@ from flask import session, redirect
 from . import auth, config
 
 
-@auth.route('/', method=['GET'])
+@auth.route('/', methods=['GET'])
 def chk_login():
     uid = session.get('uid')
     if uid is None:
@@ -11,7 +11,7 @@ def chk_login():
         return {'uid': uid}, 302
 
 
-@auth.route('/logout', method=['GET'])
+@auth.route('/logout', methods=['GET'])
 def logout():
     session['username'] = False
     return redirect(config.HOME_URL)
