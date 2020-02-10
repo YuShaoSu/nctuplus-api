@@ -1,7 +1,8 @@
+import logging
 from flask import request, redirect
 from app.auth.config import NCTU_OAUTH_ID, NCTU_OAUTH_SECRET, NCTU_OAUTH_TOKEN, NCTU_OAUTH_URL, NCTU_OAUTH_REDIRECT, \
     NCTU_OAUTH_PROFILE
-from . import auth
+from . import auth, user_handler
 import requests
 
 
@@ -30,16 +31,12 @@ def get_profile(access_token):
     access_header = {
         'Authorization': 'Bearer ' + access_token
     }
-
     # {'username': '0516016', 'email': 'neighborbob.cs05@nctu.edu.tw'}
     res = requests.get(NCTU_OAUTH_PROFILE, headers=access_header).json()
+    user = user_handler.get_nctu_user(res)
+
+    return user
+
     # create or exists
-    user_handler(res)
+    # user_handler(res)
     # set cookie, response, redirect...
-
-
-def user_handler(res):
-    # handle user account, set session, etc.
-    print(res)
-
-
