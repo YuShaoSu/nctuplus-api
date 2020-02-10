@@ -34,9 +34,9 @@ def get_profile(access_token):
     }
     # {'username': '0516016', 'email': 'neighborbob.cs05@nctu.edu.tw'}
     res = requests.get(NCTU_OAUTH_PROFILE, headers=access_header).json()
-    user = user_handler.get_nctu_user(res)
-
-    return util.obj2dict(user)
+    user = util.obj2dict(user_handler.get_nctu_user(res))
+    print(user)
+    return jsonify(user)
 
     # create or exists
     # user_handler(res)
