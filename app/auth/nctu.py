@@ -25,7 +25,7 @@ def get_token():
     }
 
     res = requests.post(NCTU_OAUTH_TOKEN, data=post_data).json()
-    get_profile(res['access_token'])
+    return get_profile(res['access_token'])
 
 
 def get_profile(access_token):
