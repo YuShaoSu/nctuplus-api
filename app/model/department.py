@@ -8,8 +8,8 @@ class Department(db.Model):
     department_type = db.Column(db.String(1), nullable=False)
     category = db.Column(db.Integer, nullable=False)
     code = db.Column(db.String(2), nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
     category_id = db.Column(db.Integer, db.ForeignKey('college.id'), nullable=False)
 
     __table_args__ = {

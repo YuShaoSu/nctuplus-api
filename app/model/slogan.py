@@ -7,8 +7,8 @@ class Slogan(db.Model):
     title = db.Column(db.String(1000), nullable=False)
     display = db.Column(db.Boolean, server_default=text('True'))
     author_id = db.Column(db.BigInteger, nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
 
     __table_args__ = {
         'mysql_engine': 'InnoDB',

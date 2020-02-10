@@ -16,8 +16,8 @@ class Event(db.Model):
     follow_count = db.Column(db.Integer, nullable=False, server_default=text('0'))
     begin_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
-    created_at = db.Column(db.DateTime, nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
 
 
     __table_args__ = {
