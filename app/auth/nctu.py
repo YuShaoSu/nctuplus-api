@@ -1,5 +1,5 @@
 import logging
-from flask import request, redirect
+from flask import request, redirect, jsonify
 from app.auth.config import NCTU_OAUTH_ID, NCTU_OAUTH_SECRET, NCTU_OAUTH_TOKEN, NCTU_OAUTH_URL, NCTU_OAUTH_REDIRECT, \
     NCTU_OAUTH_PROFILE
 from . import auth, user_handler
@@ -35,7 +35,7 @@ def get_profile(access_token):
     res = requests.get(NCTU_OAUTH_PROFILE, headers=access_header).json()
     user = user_handler.get_nctu_user(res)
 
-    return user
+    return jsonify(user)
 
     # create or exists
     # user_handler(res)
