@@ -10,3 +10,7 @@ class Slogan(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
+    __table_args__ = {
+        'mysql_engine': 'InnoDB',
+        'mysql_charset': 'utf8mb4'
+    }

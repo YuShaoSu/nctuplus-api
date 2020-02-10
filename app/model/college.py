@@ -10,3 +10,7 @@ class College(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False)
     department = db.relationship('Department', backref='college', lazy=True)
 
+    __table_args__ = {
+        'mysql_engine': 'InnoDB',
+        'mysql_charset': 'utf8mb4'
+    }

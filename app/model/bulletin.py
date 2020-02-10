@@ -10,3 +10,8 @@ class Bulletin(db.Model):
     end_time = db.Column(db.DateTime)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
+
+    __table_args__ = {
+        'mysql_engine': 'InnoDB',
+        'mysql_charset': 'utf8mb4'
+    }

@@ -12,3 +12,7 @@ class Department(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('college.id'), nullable=False)
 
+    __table_args__ = {
+        'mysql_engine': 'InnoDB',
+        'mysql_charset': 'utf8mb4'
+    }

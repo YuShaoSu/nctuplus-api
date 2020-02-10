@@ -24,6 +24,11 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
 
+    __table_args__ = {
+        'mysql_engine': 'InnoDB',
+        'mysql_charset': 'utf8mb4'
+    }
+
     def __init__(self, student_id, nctu, facebook_id, facebook, name, email, admission_year, provider):
         self.student_id = student_id
         self.nctu = nctu
