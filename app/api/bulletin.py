@@ -8,7 +8,7 @@ from app.controller import bulletin_controller as bc
 
 ID = 1
 NAME = '王大明'
-prefix = 'bulletins'
+prefix = 'bulletin'
 
 
 @api.route('%s' % prefix, methods=['POST'])
@@ -34,10 +34,12 @@ def update(bid):
         return response(403, message='not login')
 
     result = bc.update(bid, request.form, uid)
-    if result is not None:
+    if result == 403:
+        return response(403, message='current user is not the author')
+    elif result == 402:
+        return response(402, message='patch content error')
+    elif result is not None:
         return jsonify(result), 200
-    elif result == 403:
-        return response(403, message='user id != author id')
     else:
         return {'message': 'PATCH failed'}, 402
 
@@ -50,6 +52,6 @@ def delete(bid):
 
     result = bc.destroy(bid, uid)
     if result == 403:
-        return response(403, message='user id != author id')
+        return response(403, message='current user is not the author')
     else:
         return '', 204
