@@ -1,9 +1,7 @@
 from flask import request, jsonify
 from . import api
 from .response import response
-from app.model.bulletin import Bulletin
 from app.auth.user_handler import get_uid
-from app import util
 from app.controller import bulletin_controller as bc
 
 ID = 1
@@ -12,23 +10,23 @@ prefix = 'bulletin'
 
 
 @api.route('%s' % prefix, methods=['POST'])
-def create():
+def create_bulletin():
     uid = get_uid()
     if uid is None:
         return response(403, message='not login')
 
-    result = bc.create(request.form, uid, NAME)
+    result = bc.create(request.form, uid)
     return jsonify(result), 200
 
 
 @api.route('%s' % prefix, methods=['GET'])
-def index():
+def index_bulletin():
     result = bc.index()
     return jsonify(result), 200
 
 
 @api.route('%s/<int:bid>' % prefix, methods=['PATCH'])
-def update(bid):
+def update_bulletin(bid):
     uid = get_uid()
     if uid is None:
         return response(403, message='not login')
@@ -45,7 +43,7 @@ def update(bid):
 
 
 @api.route('%s/<int:bid>' % prefix, methods=['DELETE'])
-def delete(bid):
+def delete_bulletin(bid):
     uid = get_uid()
     if uid is None:
         return response(403, message='not login')
