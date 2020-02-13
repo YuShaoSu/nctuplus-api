@@ -2,6 +2,7 @@ from app.model.bulletin import Bulletin
 from app.model.user import User
 from app import util
 from app.model.shared_model import db
+from datetime import datetime
 
 permit_parameter = ['title', 'category', 'begin_time', 'end_time']
 
@@ -82,6 +83,7 @@ def update(bid, data, uid):
         if key not in permit_parameter:
             return 402
         setattr(bulletin, key, data[key])
+    bulletin.updated_at = datetime.now()
     db.session.commit()
     return util.obj2dict(bulletin)
 
