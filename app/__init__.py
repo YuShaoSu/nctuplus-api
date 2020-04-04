@@ -1,5 +1,6 @@
 import logging
 from flask import Flask
+from flask_cors import CORS
 from app.model.shared_model import db
 from app.configmodule import DevelopmentConfig
 from flask_session import Session
@@ -8,6 +9,7 @@ from flask_session import Session
 def create_app():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s : %(message)s', datefmt='%m-%d %H:%M')
     app = Flask(__name__)
+    CORS(app)
     app.config.from_object(DevelopmentConfig())
     sess = Session(app)
 
