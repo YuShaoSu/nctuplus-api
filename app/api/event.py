@@ -11,11 +11,11 @@ prefix = 'event'
 
 @api.route('%s' % prefix, methods=['POST'])
 def create_event():
-    uid = get_uid()
-    if uid is None:
-        return response(403, message='not login')
+    # uid = get_uid()
+    # if uid is None:
+    #     return response(403, message='not login')
 
-    result = ec.create(request.form, uid)
+    result = ec.create(request.form, get_uid())
     return jsonify(result), 200
 
 
@@ -33,11 +33,11 @@ def show_event(eid):
 
 @api.route('%s/<int:eid>' % prefix, methods=['PATCH'])
 def update_event(eid):
-    uid = get_uid()
-    if uid is None:
-        return response(403, message='not login')
+    # uid = get_uid()
+    # if uid is None:
+    #     return response(403, message='not login')
 
-    result = ec.update(eid, request.form, uid)
+    result = ec.update(eid, request.form, get_uid())
     if result == 403:
         return response(403, message='current user is not the author')
     elif result == 402:
@@ -50,11 +50,11 @@ def update_event(eid):
 
 @api.route('%s/<int:eid>' % prefix, methods=['DELETE'])
 def delete_event(eid):
-    uid = get_uid()
-    if uid is None:
-        return response(403, message='not login')
+    # uid = get_uid()
+    # if uid is None:
+    #     return response(403, message='not login')
 
-    result = ec.destroy(eid, uid)
+    result = ec.destroy(eid, get_uid())
     if result == 403:
         return response(403, message='current user is not the author')
     else:
@@ -63,15 +63,15 @@ def delete_event(eid):
 
 @api.route('%s/<int:eid>/follow' % prefix, methods=['POST'])
 def follow_event(eid):
-    uid = get_uid()
-    if uid is None:
-        return response(403, message='not login')
-    return '', ec.follow(eid, uid)
+    # uid = get_uid()
+    # if uid is None:
+    #     return response(403, message='not login')
+    return '', ec.follow(eid, get_uid())
 
 
 @api.route('%s/<int:eid>/follow' % prefix, methods=['DELETE'])
 def delete_follow_event(eid):
-    uid = get_uid()
-    if uid is None:
-        return response(403, message='not login')
-    return '', ec.destroy_follow(eid, uid)
+    # uid = get_uid()
+    # if uid is None:
+    #     return response(403, message='not login')
+    return '', ec.destroy_follow(eid, get_uid())

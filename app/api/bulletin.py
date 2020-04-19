@@ -11,11 +11,11 @@ prefix = 'bulletin'
 
 @api.route('%s' % prefix, methods=['POST'])
 def create_bulletin():
-    uid = get_uid()
-    if uid is None:
-        return response(403, message='not login')
+    # uid = get_uid()
+    # if uid is None:
+    #     return response(403, message='not login')
 
-    result = bc.create(request.form, uid)
+    result = bc.create(request.form, get_uid())
     return jsonify(result), 200
 
 
@@ -27,11 +27,11 @@ def index_bulletin():
 
 @api.route('%s/<int:bid>' % prefix, methods=['PATCH'])
 def update_bulletin(bid):
-    uid = get_uid()
-    if uid is None:
-        return response(403, message='not login')
+    # uid = get_uid()
+    # if uid is None:
+    #     return response(403, message='not login')
 
-    result = bc.update(bid, request.form, uid)
+    result = bc.update(bid, request.form, get_uid())
     if result == 403:
         return response(403, message='current user is not the author')
     elif result == 402:
