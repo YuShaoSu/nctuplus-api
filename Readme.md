@@ -1,8 +1,12 @@
 ## NCTU+ refactor API server
 
 ### built with **Flask**
-- add app/configmodule.py 
-- add app/auth/config.py
+- config of flask and database 
+    -  `cp app/configmodule_sample.py app/configmodule.py`
+        - replace the upper case string in configmodule_sample.py
+- config of nctu oauth
+    - `cp app/auth/config_sample.py app/auth/config.py`
+        - fill the empty strings
 - `export FLASK_APP=run.py`
 - `flask run`
 

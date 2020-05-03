@@ -1,0 +1,7 @@
+NCTU_OAUTH_URL = ''
+NCTU_OAUTH_ID = ''
+NCTU_OAUTH_SECRET = ''
+NCTU_OAUTH_TOKEN = 'https://id.nctu.edu.tw/o/token/'
+NCTU_OAUTH_REDIRECT = ''
+NCTU_OAUTH_PROFILE = 'https://id.nctu.edu.tw/api/profile/'
+HOME_URL = ''
