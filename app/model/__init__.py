@@ -1,1 +1,2 @@
-from . import shared_model, user, bulletin, slogan, college, department, event, event_follower, teacher
+from . import shared_model, user, bulletin, slogan, college, department, event, event_follower, teacher, \
+    permanent_course, course

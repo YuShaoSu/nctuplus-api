@@ -11,6 +11,7 @@ class Department(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
     category_id = db.Column(db.Integer, db.ForeignKey('college.id'), nullable=False)
+    permanent_course = db.relationship('PermanentCourse', backref='department', lazy=True)
 
     __table_args__ = {
         'mysql_engine': 'InnoDB',
