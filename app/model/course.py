@@ -1,6 +1,7 @@
 from .shared_model import db
 from sqlalchemy import text
 
+
 # TODO implementation of time slot conversion and write doc
 # 現在 DB 裡用 12bytes(96bit) 的 binary 來保存課程時段
 # 16個時段(M~L) * 每週 6 天 = 96 bits
@@ -16,9 +17,9 @@ class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # TODO need to define type key-value in doc
     course_type = db.Column(db.Integer)
-    credit = db.Column(db.Integer)
-    hour = db.Column(db.Integer)
-    code = db.Column(db.Integer, nullable=False)
+    credit = db.Column(db.Float)
+    hour = db.Column(db.Float)
+    cid = db.Column(db.Integer, nullable=False)
     classroom = db.Column(db.String(10))
     grade = db.Column(db.Integer)
     semester = db.Column(db.String(10), nullable=False)

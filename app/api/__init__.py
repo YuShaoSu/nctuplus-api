@@ -10,4 +10,4 @@ def user_auth():
     #     return response(403, message='not login')
 
 
-from . import bulletin, event
+from . import bulletin, event, course
