@@ -19,7 +19,7 @@ class Course(db.Model):
     hour = db.Column(db.Float)
     cid = db.Column(db.Integer, nullable=False)
     classroom = db.Column(db.String(10))
-    grade = db.Column(db.Integer)
+    # grade = db.Column(db.Integer)
     semester = db.Column(db.String(10), nullable=False)
     memo = db.Column(db.String(200), nullable=False)
     registration_count = db.Column(db.Integer)

@@ -1,8 +1,12 @@
 app/auth/config.py
+app/util/data_import/config.py
 .idea/
 *.xml
 
+*.csv
+
 app/configmodule.py
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
