@@ -19,19 +19,22 @@ class Course(db.Model):
     hour = db.Column(db.Float)
     cid = db.Column(db.Integer, nullable=False)
     classroom = db.Column(db.String(10))
-    # grade = db.Column(db.Integer)
     semester = db.Column(db.String(10), nullable=False)
     memo = db.Column(db.String(200), nullable=False)
     registration_count = db.Column(db.Integer)
     registration_limit = db.Column(db.Integer)
-    time_slot = db.Column(db.LargeBinary)
-    created_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
-    updated_at = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
+    time_description = db.Column(db.String)
+    campus = db.Column(db.String)
+
+    created_at = db.Column(db.DateTime, nullable=False, default=db.func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, default=db.func.now())
 
     permanent_course_id = db.Column(db.Integer, db.ForeignKey('permanent_course.id'), nullable=False)
     teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'), nullable=False)
     ext_id = db.Column(db.Integer, db.ForeignKey('course_ext.id'), nullable=False)
     type_id = db.Column(db.Integer, db.ForeignKey('course_type.id'), nullable=False)
+
+    time_slots = db.relationship('CourseTimeSlot', backref='course', lazy=True)
 
     __table_args__ = {
         'mysql_engine': 'InnoDB',
